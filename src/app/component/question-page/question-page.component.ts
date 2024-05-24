@@ -41,7 +41,7 @@ export class QuestionPageComponent {
     {
       questionId: "ea7a985a-a53f-4df3-a2a8-d4de82d6d67a",
       sequence: 1,
-      title: "ข้อใดได้ผลรวม 20",
+      title: "ข้อใดได้ผลรวม 20 ",
       questionAnswerInfo: [
         {
           questionAnswerId: "f7fc7571-16f5-4e59-8153-94fc59c1fb8b",
