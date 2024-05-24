@@ -1,1 +1,35 @@
 /* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.invalid-feedback{
+    color: red;
+}
+.is-invalid{
+    border: 1px solid red;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.stepper-action {
+    display: grid;
+    grid-column: 2;
+    grid-template-columns: 1fr 1fr;
+    padding: 10px 0px;
+    margin-top: 30px;
+  
+    .left-button {
+      text-align: left;
+    }
+  
+    .right-button {
+      text-align: right;
+    }
+  
+    button {
+      height: 56px;
+      width: 250px;
+      border-radius: 8px;
+    }
+}

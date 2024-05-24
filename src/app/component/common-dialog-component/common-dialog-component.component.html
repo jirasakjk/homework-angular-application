@@ -1,0 +1,13 @@
+<div mat-dialog-content>
+    <div class="icon">
+        <div class="ico {{ data.type }}"></div>
+    </div>
+    <p class="al-center">{{data.message}}</p>
+</div>
+<div mat-dialog-actions class="al-center mb-5">
+  <button mat-button mat-dialog-close class="rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 mb-3 w-button mb-6"
+    *ngIf="data.close !== undefined" (click)="close()">Close</button>
+
+    <button mat-button mat-dialog-close class="bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 w-button mb-6"
+    *ngIf="data.approve !== undefined" (click)="approve()">OK</button>
+</div>

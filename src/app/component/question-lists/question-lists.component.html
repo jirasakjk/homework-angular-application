@@ -1,0 +1,15 @@
+
+<div class="container-a">
+    <div class="header">
+        <h2>Question list</h2>
+    </div>
+    <div class="body">
+        <ol>
+            <li class="question-link"  *ngFor="let category of categories">
+                
+                <a (click)="openQuestions(category.questionCategoryId, category.title)"><ul [innerHTML]="category.title">
+                </ul></a>
+            </li>
+        </ol>
+    </div>
+</div>

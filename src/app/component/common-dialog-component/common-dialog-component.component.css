@@ -1,0 +1,42 @@
+.al-center{
+    align-content: center;
+    align-items: center;
+    align-self: center;
+    text-align: center;
+}
+
+.icon {
+    text-align   : center;
+    height       : 200px;
+    margin-bottom: 30px;
+    width        : 500px;
+
+    .ico {
+        width              : 200px;
+        height             : 200px;
+        background-repeat  : no-repeat;
+        background-size    : 100%;
+        background-position: center;
+        border-radius      : 50px;
+        margin             : auto;
+
+        &.error {
+            background-image: url(/assets/images/error-img.svg);
+        }
+
+        &.warning {
+            background-image: url(/assets/images/warning-img.svg);
+        }
+    }
+}
+.w-button{
+    width: 80px;
+}
+.bg-blue-500 {
+    --tw-bg-opacity: 1;
+    background-color: rgb(59 130 246 / var(--tw-bg-opacity));
+    color: rgb(255 255 255 / var(--tw-text-opacity)) !important;
+}
+.mb-3{
+    margin-bottom: 10px;
+}

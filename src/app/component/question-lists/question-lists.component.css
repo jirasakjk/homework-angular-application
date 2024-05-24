@@ -1,0 +1,28 @@
+
+.container-a{
+    display: grid;
+    align-items: center;
+
+
+    .header{
+        align-items: center;
+    }
+
+    .body{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .question-link{
+            padding: 12px 30px;
+            border-radius: 8px;
+            border: 1px solid var(--Separator-Gray, #F3F3F3);
+            margin-top: 10px;
+        }
+        .question-link:hover{
+            background-color: #1f2937c9;
+            color: #F3F3F3;
+            cursor: pointer;
+        }
+    }
+}

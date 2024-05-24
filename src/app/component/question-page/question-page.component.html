@@ -1,0 +1,152 @@
+<div class="time-up">
+    <p class="time-box">Time remaining: {{ displayTime }} seconds</p>
+</div>
+<mat-stepper
+    class="example-stepper"
+    [orientation]="(stepperOrientation | async)!"
+    [linear]="true">
+    <mat-step [stepControl]="firstFormGroup" label="" >
+        <div class="content-question">
+            <form [formGroup]="firstFormGroup">
+                <div class="" *ngFor="let item of question.questionInfo">
+                    <div class="title" *ngIf="item.sequence  === 1">
+                        <h2> {{item.title}}</h2>
+                    </div>
+                    <div class="content" *ngIf="item.sequence === 1">
+                        <input type="hidden" name="questionId" id="questionId" [value]="item.questionId">
+                        <div class="relative flex gap-x-3" *ngFor="let items of item.questionAnswerInfo">
+                            <div class="flex h-6 items-center pd-content" *ngIf="items != null">
+                                <input id="questionAnswerId" name="questionAnswerId" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600 mr-4" 
+                                    [value]="items.questionAnswerId" (change)="onCheckboxChange($event, firstFormGroup, item.questionId)">
+                                <label> {{ items.sequence}}.{{') '}} {{ items.answer}}</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="stepper-action">
+            <div class="left-button">
+            </div>
+            <div class="right-button">
+                <button class="bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600" mat-button matStepperNext>Next</button>
+            </div>
+        </div>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup" label="">
+        <div class="content-question">
+            <form [formGroup]="secondFormGroup">
+                <div class="" *ngFor="let item of question.questionInfo">
+                    <div class="title" *ngIf="item.sequence  === 2">
+                        <h2> {{item.title}}</h2>
+                    </div>
+                    <div class="content" *ngIf="item.sequence  === 2">
+                        <input type="hidden" name="questionId" [value]="item.questionId">
+                        <div class="relative flex gap-x-3" *ngFor="let items of item.questionAnswerInfo">
+                            <div class="flex h-6 items-center pd-content" *ngIf="items != null">
+                                <input id="questionAnswerId" name="questionAnswerId" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600 mr-4" 
+                                    [value]="items.questionAnswerId" (change)="onCheckboxChange($event, secondFormGroup, item.questionId)">
+                                <label> {{ items.sequence}}.{{') '}} {{ items.answer}}</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="stepper-action">
+            <div class="left-button">
+                <button class="color-basic" mat-button matStepperPrevious>Back</button>
+            </div>
+            <div class="right-button">
+                <button class="color-primary text-white " mat-button matStepperNext>Next</button>
+            </div>
+        </div>
+    </mat-step>
+    <mat-step [stepControl]="thirdFormGroup">
+        <div class="content-question">
+            <form [formGroup]="thirdFormGroup">
+                <div class="" *ngFor="let item of question.questionInfo">
+                    <div class="title" *ngIf="item.sequence  === 3">
+                        <h2> {{item.title}}</h2>
+                    </div>
+                    <div class="content" *ngIf="item.sequence  === 3">
+                        <input type="hidden" name="questionId" [value]="item.questionId">
+                        <div class="relative flex gap-x-3" *ngFor="let items of item.questionAnswerInfo">
+                            <div class="flex h-6 items-center pd-content" *ngIf="items != null">
+                                <input id="questionAnswerId" name="questionAnswerId" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600 mr-4" 
+                                [value]="items.questionAnswerId" (change)="onCheckboxChange($event, thirdFormGroup, item.questionId)">
+                                <label> {{ items.sequence}}.{{') '}} {{ items.answer}}</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="stepper-action">
+            <div class="left-button">
+                <button class="color-basic" mat-button matStepperPrevious>Back</button>
+            </div>
+            <div class="right-button">
+                <button class="color-primary text-white " mat-button matStepperNext>Next</button>
+            </div>
+        </div>
+    </mat-step>
+    <mat-step [stepControl]="fourthFormGroup">
+        <div class="content-question">
+            <form [formGroup]="fourthFormGroup">
+                <div class="" *ngFor="let item of question.questionInfo">
+                    <div class="title" *ngIf="item.sequence  === 4">
+                        <h2> {{item.title}}</h2>
+                    </div>
+                    <div class="content" *ngIf="item.sequence  === 4">
+                        <input type="hidden" name="questionId" [value]="item.questionId">
+                        <div class="relative flex gap-x-3" *ngFor="let items of item.questionAnswerInfo">
+                            <div class="flex h-6 items-center pd-content" *ngIf="items != null">
+                                <input id="questionAnswerId" name="questionAnswerId" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600 mr-4" 
+                                    [value]="items.questionAnswerId" (change)="onCheckboxChange($event, fourthFormGroup, item.questionId)">
+                                <label> {{ items.sequence}}.{{') '}} {{ items.answer}}</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="stepper-action">
+            <div class="left-button">
+                <button class="color-basic" mat-button matStepperPrevious>Back</button>
+            </div>
+            <div class="right-button">
+                <button class="color-primary text-white " mat-button matStepperNext>Next</button>
+            </div>
+        </div>
+    </mat-step>
+    <mat-step [stepControl]="fifthFormGroup">
+        <div class="content-question">
+            <form [formGroup]="fifthFormGroup">
+                <div class="" *ngFor="let item of question.questionInfo">
+                    <div class="title" *ngIf="item.sequence  === 5">
+                        <h2> {{item.title}}</h2>
+                    </div>
+                    <div class="content" *ngIf="item.sequence  === 5">
+                        <input type="hidden" name="questionId" [value]="item.questionId">
+                        <div class="relative flex gap-x-3" *ngFor="let items of item.questionAnswerInfo">
+                            <div class="flex h-6 items-center pd-content" *ngIf="items != null">
+                                <input id="questionAnswerId" name="questionAnswerId" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600 mr-4" 
+                                    [value]="items.questionAnswerId" (change)="onCheckboxChange($event, fifthFormGroup, item.questionId)">
+                                <label> {{ items.sequence}}.{{') '}} {{ items.answer}}</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="stepper-action">
+            <div class="left-button">
+                <button class="color-basic" mat-button matStepperPrevious>Back</button>
+            </div>
+            <div class="right-button">
+                <button class="color-primary text-white " mat-button matStepperNext (click)="submitForm()">Finish</button>
+            </div>
+        </div>
+    </mat-step>
+</mat-stepper>

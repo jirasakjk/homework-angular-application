@@ -1,0 +1,27 @@
+.container-done{
+
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    columns: 2;
+    align-content: center;
+    flex-wrap: nowrap;
+    padding: 80px 20px;
+
+    .image-done{
+        width: 500px;
+        height: 300px;
+    }
+
+    .text-done{
+        font-size: 20px;
+        margin-top: 20px;
+        
+    }
+}
+.w-200{
+    width: 200px;
+}
+.mt-done{
+    margin-top: 30px;
+}

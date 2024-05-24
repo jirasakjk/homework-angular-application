@@ -1,0 +1,55 @@
+.example-stepper {
+    margin-top: 8px;
+}
+  
+.mat-mdc-form-field {
+    margin-top: 16px;
+}
+
+.color-primary {
+    --tw-bg-opacity: 1;
+    background-color: rgb(59 130 246 / var(--tw-bg-opacity));
+    color: rgb(255 255 255 / var(--tw-text-opacity)) !important;
+}
+
+.color-basic{
+    background-color: #f5f5f5;
+}
+.content-question{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    .title{
+        padding: 20px 0px; 
+    }
+}
+
+.bg-blue-500 {
+    --tw-bg-opacity: 1;
+    background-color: rgb(59 130 246 / var(--tw-bg-opacity));
+    color: rgb(255 255 255 / var(--tw-text-opacity)) !important;
+}
+
+.text-white {
+    --tw-text-opacity: 1;
+    color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+.pd-content{
+    padding: 20px;
+}
+
+.time-up{
+    padding: 10px 60px;
+    display: flex;
+    position: relative;
+    justify-content: flex-end;
+
+}
+.time-box{
+    border: 1px solid var(--Separator-Gray, #b1b1b1);
+    border-radius: 8px;
+    padding: 10px 20px;
+    background-color: #f4f4f4;
+}
