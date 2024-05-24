@@ -8,11 +8,13 @@ import { Router } from '@angular/router';
 })
 export class CompleteQuestionPageComponent {
 
+  public fullScore: number = Number(localStorage.getItem('fullScore'));
   constructor(
     private router: Router,
   ) { }
 
   ngOnInit(): void {
+
   }
 
   goToHome() {

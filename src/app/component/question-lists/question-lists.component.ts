@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import { QuestionCategory } from '../../models/question-category';
 import { QuestionCategoryService } from '../../services/question-service/question-category.service';
 import { Router } from '@angular/router';
+import { CommonDialogComponentComponent } from '../common-dialog-component/common-dialog-component.component';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { DialogState } from '../../models/dialog-data';
 
 @Component({
   selector: 'app-question-lists',
@@ -23,10 +26,12 @@ export class QuestionListsComponent {
     }
   ]
   
+  public errorData: any;
 
   constructor(
     private questionCategoryService: QuestionCategoryService,
-    private router: Router
+    private router: Router,
+    private dialog: MatDialog,
   ) {
 
   }
@@ -40,6 +45,21 @@ export class QuestionListsComponent {
       },
       (error) => {
         console.error('Error fetching categories', error);
+        this.errorData = error?.error?.errors[0]?.message;
+        const dlgRef: MatDialogRef<CommonDialogComponentComponent> = this.dialog.open(CommonDialogComponentComponent, {
+          hasBackdrop: true,
+          data: {
+            message: `${this.errorData}`,
+            title: 'Error',
+            type: 'error',
+            approve: 'approve'
+          }
+        });
+        dlgRef.afterClosed().subscribe((result: DialogState) => {
+          if (result === DialogState.APPROVE) {
+            return;
+          }
+        });
       }
     );
     // this.categories = this.data;

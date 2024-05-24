@@ -37,6 +37,9 @@ export class QuestionPageComponent {
     questions: []
   };
 
+  public errorData: any;
+
+
   data ={ questionInfo: [
     {
       questionId: "ea7a985a-a53f-4df3-a2a8-d4de82d6d67a",
@@ -228,6 +231,21 @@ export class QuestionPageComponent {
       },
       (error) => {
         console.error('Error fetching categories', error);
+        this.errorData = error?.error?.errors[0]?.message;
+        const dlgRef: MatDialogRef<CommonDialogComponentComponent> = this.dialog.open(CommonDialogComponentComponent, {
+          hasBackdrop: true,
+          data: {
+            message: `${this.errorData}`,
+            title: 'Error',
+            type: 'error',
+            approve: 'approve'
+          }
+        });
+        dlgRef.afterClosed().subscribe((result: DialogState) => {
+          if (result === DialogState.APPROVE) {
+            return;
+          }
+        });
       }
     );
     // this.question.questionInfo = this.data.questionInfo
@@ -288,6 +306,21 @@ export class QuestionPageComponent {
       },
       (error) => {
         console.error('Error fetching categories', error);
+        this.errorData = error?.error?.errors[0]?.message;
+        const dlgRef: MatDialogRef<CommonDialogComponentComponent> = this.dialog.open(CommonDialogComponentComponent, {
+          hasBackdrop: true,
+          data: {
+            message: `${this.errorData}`,
+            title: 'Error',
+            type: 'error',
+            approve: 'approve'
+          }
+        });
+        dlgRef.afterClosed().subscribe((result: DialogState) => {
+          if (result === DialogState.APPROVE) {
+            return;
+          }
+        });
       }
     );
 
