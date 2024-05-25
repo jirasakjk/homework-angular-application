@@ -1,4 +1,4 @@
-
+<app-loading-spinner [isLoading]="isLoading"></app-loading-spinner>
 <div class="container-a">
     <div class="header">
         <h2>Question list</h2>
@@ -6,8 +6,10 @@
     <div class="body">
         <ol>
             <li class="question-link"  *ngFor="let category of categories">
-                
-                <a (click)="openQuestions(category.questionCategoryId, category.title)"><ul [innerHTML]="category.title">
+                <div class="question-img">
+                    <img class="img-questio" src="assets/images/logo-img.svg" alt="Question">
+                </div>
+                <a class="text-question" (click)="openQuestions(category.questionCategoryId, category.title)"><ul [innerHTML]="category.title">
                 </ul></a>
             </li>
         </ol>

@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 import { CommonDialogComponentComponent } from '../common-dialog-component/common-dialog-component.component';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { DialogState } from '../../models/dialog-data';
+import { AuthServiceService } from '../../services/auth-service/auth-service.service';
 
 @Component({
   selector: 'app-question-page',
@@ -208,6 +209,7 @@ export class QuestionPageComponent {
     breakpointObserver: BreakpointObserver,
     private router: Router,
     private dialog: MatDialog,
+    private authService: AuthServiceService,
   ) {
     this.stepperOrientation = breakpointObserver
       .observe('(min-width: 800px)')
@@ -232,6 +234,7 @@ export class QuestionPageComponent {
       (error) => {
         console.error('Error fetching categories', error);
         this.errorData = error?.error?.errors[0]?.message;
+        const errKey = error?.error?.errors[0]?.key;
         const dlgRef: MatDialogRef<CommonDialogComponentComponent> = this.dialog.open(CommonDialogComponentComponent, {
           hasBackdrop: true,
           data: {
@@ -242,15 +245,17 @@ export class QuestionPageComponent {
           }
         });
         dlgRef.afterClosed().subscribe((result: DialogState) => {
-          if (result === DialogState.APPROVE) {
+          if(errKey === '401002'){
+            this.authService.logout();
+          }else{
             return;
           }
         });
       }
     );
-    // this.question.questionInfo = this.data.questionInfo
+    this.question.questionInfo = this.data.questionInfo
 
-    // this.remainingTime = 1*60;
+    this.remainingTime = 1*60;
     this.startTimer();
   }
 
@@ -305,8 +310,10 @@ export class QuestionPageComponent {
         this.router.navigate(['/web/complete-question-page']);
       },
       (error) => {
+        
         console.error('Error fetching categories', error);
         this.errorData = error?.error?.errors[0]?.message;
+        const errKey = error?.error?.errors[0]?.key;
         const dlgRef: MatDialogRef<CommonDialogComponentComponent> = this.dialog.open(CommonDialogComponentComponent, {
           hasBackdrop: true,
           data: {
@@ -318,7 +325,11 @@ export class QuestionPageComponent {
         });
         dlgRef.afterClosed().subscribe((result: DialogState) => {
           if (result === DialogState.APPROVE) {
-            return;
+            if(errKey === '401002'){
+              this.authService.logout();
+            }else{
+              return;
+            }
           }
         });
       }

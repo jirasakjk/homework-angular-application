@@ -22,6 +22,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { AsyncPipe } from '@angular/common';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { CompleteQuestionPageComponent } from './component/complete-question-page/complete-question-page.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { LoadingSpinnerComponent } from './component/loading-spinner/loading-spinner.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +36,7 @@ import { CompleteQuestionPageComponent } from './component/complete-question-pag
     QuestionListsComponent,
     QuestionPageComponent,
     CompleteQuestionPageComponent,
+    LoadingSpinnerComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +52,8 @@ import { CompleteQuestionPageComponent } from './component/complete-question-pag
     MatInputModule,
     MatButtonModule,
     AsyncPipe,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatProgressSpinnerModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }

@@ -28,6 +28,8 @@ export class QuestionListsComponent {
   
   public errorData: any;
 
+  public isLoading = false;
+
   constructor(
     private questionCategoryService: QuestionCategoryService,
     private router: Router,
@@ -39,11 +41,14 @@ export class QuestionListsComponent {
   ngOnInit(): void {
     localStorage.removeItem('categoryId');
     localStorage.removeItem('titleCategory');
+    this.isLoading = true;
     this.questionCategoryService.getQuestionCategories().subscribe(
       (data) => {
+        this.isLoading = false;
         this.categories = data?.data;
       },
       (error) => {
+        this.isLoading = false;
         console.error('Error fetching categories', error);
         this.errorData = error?.error?.errors[0]?.message;
         const dlgRef: MatDialogRef<CommonDialogComponentComponent> = this.dialog.open(CommonDialogComponentComponent, {
