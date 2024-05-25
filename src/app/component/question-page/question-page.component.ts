@@ -32,6 +32,8 @@ export class QuestionPageComponent {
   public remainingTime: number = 0;
   public timerInterval: any;
   public displayTime: string = '00:00';
+  public isLoading = false;
+
 
   private submission: Submission = {
     questionCategoryId: '',
@@ -223,15 +225,17 @@ export class QuestionPageComponent {
     if(categoryId){
       qId = categoryId
     }
+    this.isLoading = true;
     this.questionCategoryService.getQuestions(qId).subscribe(
       (data) => {
         if(data?.data){
-
+          this.isLoading = false;
           this.question = data?.data;
           this.remainingTime = this.question?.timeLimitOfMinuteUnit * 60;
         }
       },
       (error) => {
+        this.isLoading = false;
         console.error('Error fetching categories', error);
         this.errorData = error?.error?.errors[0]?.message;
         const errKey = error?.error?.errors[0]?.key;
@@ -253,9 +257,7 @@ export class QuestionPageComponent {
         });
       }
     );
-    this.question.questionInfo = this.data.questionInfo
 
-    this.remainingTime = 1*60;
     this.startTimer();
   }
 
@@ -299,9 +301,10 @@ export class QuestionPageComponent {
   submitForm() {
    
     this.submission = this.constructSubmissionModel([this.firstFormGroup, this.secondFormGroup, this.thirdFormGroup, this.fourthFormGroup, this.fifthFormGroup]);
-    // console.log('Request Body:', this.submission);
+    this.isLoading = true;
     this.questionCategoryService.submitAssignment(this.submission).subscribe(
       (data) => {
+        this.isLoading = false;
         if(data?.data){
           localStorage.setItem('fullScore', data?.data?.fullScore);
           localStorage.setItem('score', data?.data?.score);
@@ -310,8 +313,7 @@ export class QuestionPageComponent {
         this.router.navigate(['/web/complete-question-page']);
       },
       (error) => {
-        
-        console.error('Error fetching categories', error);
+        this.isLoading = false;
         this.errorData = error?.error?.errors[0]?.message;
         const errKey = error?.error?.errors[0]?.key;
         const dlgRef: MatDialogRef<CommonDialogComponentComponent> = this.dialog.open(CommonDialogComponentComponent, {
@@ -328,7 +330,7 @@ export class QuestionPageComponent {
             if(errKey === '401002'){
               this.authService.logout();
             }else{
-              return;
+              this.router.navigate(['/web/complete-question-page']);
             }
           }
         });

@@ -9,6 +9,9 @@ import { Router } from '@angular/router';
 export class CompleteQuestionPageComponent {
 
   public fullScore: number = Number(localStorage.getItem('fullScore'));
+
+  public score: number = Number(localStorage.getItem('score'));
+
   constructor(
     private router: Router,
   ) { }

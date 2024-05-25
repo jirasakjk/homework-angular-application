@@ -20,7 +20,7 @@ export class QuestionCategoryService {
       'Authorization': `Bearer ${authToken}`
     });
 
-    return this.http.get<any>(this.apiUrl + '/question-categories', { headers });
+    return this.http.get<any>('https://training-homework.calllab.net/v1/questions/categories', { headers });
   }
 
   getQuestions(categoryId: string): Observable<any> {
@@ -29,7 +29,7 @@ export class QuestionCategoryService {
       'Authorization': `Bearer ${authToken}`
     });
 
-    return this.http.get<any>(this.apiUrl+ `/questions/categories/${categoryId}`, { headers });
+    return this.http.get<any>(`https://training-homework.calllab.net/v1/questions/categories/${categoryId}`, { headers });
   }
 
   submitAssignment(data : any): Observable<any> {
