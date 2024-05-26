@@ -231,8 +231,7 @@ export class QuestionPageComponent {
         if(data?.data){
           this.isLoading = false;
           this.question = data?.data;
-          // this.remainingTime = this.question?.timeLimitOfMinuteUnit * 60;
-          this.remainingTime = 1 * 60;
+          this.remainingTime = this.question?.timeLimitOfMinuteUnit * 60;
           this.setQuestionId();
         }
       },
