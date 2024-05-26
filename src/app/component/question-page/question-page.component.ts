@@ -4,7 +4,7 @@ import { QuestionList } from '../../models/question-list';
 import { StepperOrientation } from '@angular/cdk/stepper';
 import { Observable } from 'rxjs';
 import { BreakpointObserver } from '@angular/cdk/layout';
-import { FormBuilder, Validators, FormsModule, ReactiveFormsModule, FormGroup, FormArray, FormControl } from '@angular/forms';
+import { FormBuilder, Validators, FormGroup, FormArray, FormControl } from '@angular/forms';
 import { map } from 'rxjs/operators';
 import { Answer, Submission } from '../../models/submission';
 import { Router } from '@angular/router';
@@ -231,7 +231,9 @@ export class QuestionPageComponent {
         if(data?.data){
           this.isLoading = false;
           this.question = data?.data;
-          this.remainingTime = this.question?.timeLimitOfMinuteUnit * 60;
+          // this.remainingTime = this.question?.timeLimitOfMinuteUnit * 60;
+          this.remainingTime = 1 * 60;
+          this.setQuestionId();
         }
       },
       (error) => {
@@ -259,6 +261,26 @@ export class QuestionPageComponent {
     );
 
     this.startTimer();
+  }
+
+  setQuestionId(){
+    this.question?.questionInfo.forEach((item, index) => {
+      if(item.sequence === 1){
+        this.firstFormGroup.get('questionId')?.setValue(item.questionId);
+      }
+      if(item.sequence === 2){
+        this.secondFormGroup.get('questionId')?.setValue(item.questionId);
+      }
+      if(item.sequence === 3){
+        this.thirdFormGroup.get('questionId')?.setValue(item.questionId);
+      }
+      if(item.sequence === 4){
+        this.fourthFormGroup.get('questionId')?.setValue(item.questionId);
+      }
+      if(item.sequence === 5){
+        this.fifthFormGroup.get('questionId')?.setValue(item.questionId);
+      }
+    })
   }
 
   startTimer() {
@@ -353,16 +375,18 @@ export class QuestionPageComponent {
     // Iterate through each form group
     formGroups.forEach((formGroup: FormGroup) => {
       // Extract questionId from the form group
-      const questionId: string = formGroup.get('questionId')?.value;
-  
+      const questionId: string = formGroup.get('questionId')?.value || '';
+      
       // Extract questionAnswerId(s) from the form group
-      const questionAnswerIds: string[] = (formGroup.get('questionAnswerId') as FormArray)?.value;
+      const questionAnswerIds: string[] = (formGroup.get('questionAnswerId') as FormArray)?.value || [];
   
       // Construct answers array
-      const answers: Answer[] = questionAnswerIds.map((answerId: string) => ({ questionAnswerId: answerId }));
+      const answers: Answer[] = questionAnswerIds.map((answerId: string) => ({ questionAnswerId: answerId })) || [];
   
       // Construct question object and push it to the questions array
       submission.questions.push({ questionId, answers });
+      
+  
     });
   
     return submission;
