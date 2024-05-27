@@ -6,7 +6,10 @@
     columns: 2;
     align-content: center;
     flex-wrap: nowrap;
-    padding: 80px 20px;
+    border-radius: 24px;
+    background: var(--Text-White, #FFF);
+    box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.10);
+    padding: 180px 30px;
 
     .image-done{
         width: 500px;
