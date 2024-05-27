@@ -21,7 +21,7 @@
     align-items: center;
     flex-direction: column;
     border: 1px solid #b1b1b15e;
-    border-radius: 8px;
+    border-radius: 24px;
     padding: 60px 30px;
     box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.10);
 
@@ -52,14 +52,31 @@
 
 }
 .time-box{
-    border: 1px solid var(--Separator-Gray, #b1b1b1);
-    border-radius: 8px;
+    border-radius: 24px;
     padding: 10px 20px;
     background-color: #f4f4f4;
-    box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.10);
 
+}
+
+.time-content{
+
+    border-radius: 24px;
+    background: var(--Text-White, #FFF);
+    box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.10);
+    padding: 10px 10px;
 }
 
 .mat-horizontal-content-container{
     margin-top: 30px;
+}
+
+.line-time{
+    border-left:  5px solid var(--Separator-Gray, #1f2937);
+    height: 46px;
+    margin-left: 8px;
+    border-radius: 3px;
+}
+
+.time-color{
+    color: coral;
 }

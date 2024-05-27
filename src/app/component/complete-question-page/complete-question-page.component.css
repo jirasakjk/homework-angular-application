@@ -9,7 +9,8 @@
     border-radius: 24px;
     background: var(--Text-White, #FFF);
     box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.10);
-    padding: 180px 30px;
+    padding: 120px 30px;
+    margin-top: 30px;
 
     .image-done{
         width: 500px;
@@ -27,4 +28,20 @@
 }
 .mt-done{
     margin-top: 30px;
+}
+
+.header-done{
+    align-items: center;
+    display: flex;
+
+    border-radius: 24px;
+    background: var(--Text-White, #FFF);
+    box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.10);
+    padding: 30px 30px;
+}
+.line-header{
+    border-left:  5px solid var(--Separator-Gray, #1f2937);
+    height: 30px;
+    margin-right: 8px;
+    border-radius: 3px;
 }
