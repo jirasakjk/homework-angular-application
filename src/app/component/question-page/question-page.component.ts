@@ -232,7 +232,7 @@ export class QuestionPageComponent {
           this.isLoading = false;
           this.question = data?.data;
           this.remainingTime = this.question?.timeLimitOfMinuteUnit * 60;
-          this.setQuestionId();
+          
         }
       },
       (error) => {
@@ -320,7 +320,7 @@ export class QuestionPageComponent {
     clearInterval(this.timerInterval); // Clear interval to avoid memory leaks
   }
   submitForm() {
-   
+    this.setQuestionId();
     this.submission = this.constructSubmissionModel([this.firstFormGroup, this.secondFormGroup, this.thirdFormGroup, this.fourthFormGroup, this.fifthFormGroup]);
     this.isLoading = true;
     this.questionCategoryService.submitAssignment(this.submission).subscribe(
